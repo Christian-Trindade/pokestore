@@ -1,17 +1,14 @@
 import React, { useContext } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { StoreContext } from "../services/contexts";
+import Themes from "../themes";
+import styled, { ThemeProvider } from "styled-components";
 
 const StoreType = getStoreType();
 
-function getStoreType(): String {
-  let params = window.location.pathname;
-  let paramsSplited = params.split("/");
-  let type = "";
-
-  if (paramsSplited.length > 1) {
-    type = paramsSplited[1] || "fire";
-  }
+function getStoreType(): string {
+  let paramsSplited = window.location.host.split(".");
+  let type = paramsSplited[0];
 
   return type;
 }
@@ -19,60 +16,38 @@ function getStoreType(): String {
 const App: React.FC = () => {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
-
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
+      <Switch>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
     </Router>
   );
 };
 
 const AppContexted: React.FC = () => {
   return (
-    <StoreContext.Provider value={StoreType}>
-      <App />
+    <StoreContext.Provider value={Themes[StoreType].data}>
+      <ThemeProvider theme={Themes[StoreType].pallet}>
+        <App />
+      </ThemeProvider>
     </StoreContext.Provider>
   );
 };
 
-// to read contexts
-// import {useContext } from "react";
-// import { StoreContext } from "../services/contexts";
+const Body = styled.div`
+  background-color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.variant1};
+`;
 
 function Home() {
   const context = useContext(StoreContext);
-  return <h2>{context}</h2>;
-}
 
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
+  return (
+    <Body>
+      <h1>Olá voce está na {context.title}</h1>;
+    </Body>
+  );
 }
 
 export default AppContexted;
