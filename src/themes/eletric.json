@@ -1,0 +1,17 @@
+{
+  "title": "Poke Eletric Store",
+  "type_id": 13,
+  "pallet": {
+    "prymary": "#ffd541",
+    "shadow": "#523910",
+    "button": "#ffd541",
+    "links": "#ffd541",
+    "variant1": "#c56a18",
+    "variant2": "#9c7b10",
+    "variant3": "#f69418",
+    "variant4": "#ffffff",
+    "variant5": "#7b6a18",
+    "variant6": "#6a6a6a",
+    "variant7": "#dedede"
+  }
+}

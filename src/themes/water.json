@@ -1,0 +1,17 @@
+{
+  "title": "Poke Water Store",
+  "type_id": 11,
+  "pallet": {
+    "prymary": "#4a6ac5",
+    "shadow": "#183173",
+    "button": "#18297b",
+    "links": "#7bacff",
+    "variant1": "#415aff",
+    "variant2": "#7bcdff",
+    "variant3": "#b4084a",
+    "variant4": "#ffffff",
+    "variant5": "#5a525a",
+    "variant6": "#6a6a6a",
+    "variant7": "#dedede"
+  }
+}

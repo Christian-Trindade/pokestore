@@ -1,0 +1,17 @@
+{
+  "title": "Poke Grass Store",
+  "type_id": 12,
+  "pallet": {
+    "prymary": "#73ac31",
+    "shadow": "#184a4a",
+    "button": "#bdff73",
+    "links": "#317373",
+    "variant1": "#a4d541",
+    "variant2": "#526229",
+    "variant3": "#83eec5",
+    "variant4": "#ffffff",
+    "variant5": "#62d5b4",
+    "variant6": "#ee2039",
+    "variant7": "#dedede"
+  }
+}
