@@ -78,6 +78,7 @@ export const SearchBar = styled(TextField)`
 export const Body = styled.div`
   width: 100%;
   padding: 20px 0px 0px 20px;
+  box-sizing: border-box;
 
   h2 {
     line-height: 1.4;
