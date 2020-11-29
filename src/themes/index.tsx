@@ -4,7 +4,7 @@ interface DefaultData {
 
 const fireData = {
   data: {
-    title: "Poke Fire Store",
+    title: "Fire Store",
     type_id: 10,
   },
   pallet: {
@@ -15,7 +15,7 @@ const fireData = {
     variant1: "#ffd508",
     variant2: "#ffc562",
     variant3: "#e6ac5a",
-    variant4: "#ffffff",
+    titleColor: "#ffffff",
     variant5: "#ffd57b",
     variant6: "#6a6a6a",
     variant7: "#dedede",
@@ -24,7 +24,7 @@ const fireData = {
 
 const waterData = {
   data: {
-    title: "Poke Water Store",
+    title: "Water Store",
     type_id: 11,
   },
   pallet: {
@@ -32,10 +32,10 @@ const waterData = {
     shadow: "#183173",
     button: "#18297b",
     links: "#7bacff",
-    variant1: "#415aff",
-    variant2: "#7bcdff",
+    variant2: "#415aff",
+    variant1: "#7bcdff",
     variant3: "#b4084a",
-    variant4: "#ffffff",
+    titleColor: "#ffffff",
     variant5: "#5a525a",
     variant6: "#6a6a6a",
     variant7: "#dedede",
@@ -44,7 +44,7 @@ const waterData = {
 
 const grassData = {
   data: {
-    title: "Poke Grass Store",
+    title: "Grass Store",
     type_id: 12,
   },
   pallet: {
@@ -52,11 +52,11 @@ const grassData = {
     shadow: "#184a4a",
     button: "#bdff73",
     links: "#317373",
-    variant1: "#a4d541",
+    variant1: "#ffffff",
     variant2: "#526229",
     variant3: "#83eec5",
-    variant4: "#ffffff",
-    variant5: "#62d5b4",
+    titleColor: "#ffffff",
+    variant5: "#a4d541",
     variant6: "#ee2039",
     variant7: "#dedede",
   },
@@ -64,7 +64,7 @@ const grassData = {
 
 const ghostData = {
   data: {
-    title: "Poke Ghost Store",
+    title: "Ghost Store",
     type_id: 8,
   },
   pallet: {
@@ -75,7 +75,7 @@ const ghostData = {
     variant1: "#f6ee94",
     variant2: "#d5cd6a",
     variant3: "#de9cd5",
-    variant4: "#ffffff",
+    titleColor: "#ffffff",
     variant5: "#ff624a",
     variant6: "#d53920",
     variant7: "#dedede",
@@ -84,19 +84,19 @@ const ghostData = {
 
 const eletricData = {
   data: {
-    title: "Poke Eletric Store",
+    title: "Eletric Store",
     type_id: 13,
   },
   pallet: {
-    primary: "#ffd541",
+    primary: "#f69418",
     shadow: "#523910",
     button: "#ffd541",
     links: "#ffd541",
-    variant1: "#c56a18",
+    variant5: "#c56a18",
     variant2: "#9c7b10",
     variant3: "#f69418",
-    variant4: "#ffffff",
-    variant5: "#7b6a18",
+    titleColor: "#ffffff",
+    variant1: "#7b6a18",
     variant6: "#6a6a6a",
     variant7: "#dedede",
   },
@@ -108,7 +108,7 @@ const Themes: DefaultData = {
   grasspokestore: grassData,
   ghostpokestore: ghostData,
   eletricpokestore: eletricData,
-  "localhost:3000": fireData,
+  "localhost:3000": waterData,
 };
 
 export default Themes;

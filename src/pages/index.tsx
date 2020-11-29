@@ -1,8 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+// contexts
 import { StoreContext } from "../services/contexts";
+import { ThemeProvider } from "styled-components";
+
 import Themes from "../themes";
-import styled, { ThemeProvider } from "styled-components";
+
+// pages
+import Home from "./home";
 
 const StoreType = getStoreType();
 
@@ -34,20 +40,5 @@ const AppContexted: React.FC = () => {
     </StoreContext.Provider>
   );
 };
-
-const Body = styled.div`
-  background-color: ${({ theme }) => theme.primary};
-  color: ${({ theme }) => theme.variant1};
-`;
-
-function Home() {
-  const context = useContext(StoreContext);
-
-  return (
-    <Body>
-      <h1>Olá voce está na {context.title}</h1>;
-    </Body>
-  );
-}
 
 export default AppContexted;
