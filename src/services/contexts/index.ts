@@ -5,7 +5,6 @@ interface contextParams {
 }
 
 let contextVal: contextParams = {};
-
 const StoreContext = createContext(contextVal);
 
 export { StoreContext };
