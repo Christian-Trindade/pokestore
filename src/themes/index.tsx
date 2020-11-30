@@ -108,7 +108,7 @@ const Themes: DefaultData = {
   grasspokestore: grassData,
   ghostpokestore: ghostData,
   eletricpokestore: eletricData,
-  "localhost:3000": fireData,
+  "localhost:3000": waterData,
 };
 
 export default Themes;

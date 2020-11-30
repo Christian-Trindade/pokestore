@@ -7,4 +7,7 @@ interface contextParams {
 let contextVal: contextParams = {};
 const StoreContext = createContext(contextVal);
 
-export { StoreContext };
+let searchContextVal: string = "";
+const SearchContext = createContext(searchContextVal);
+
+export { StoreContext, SearchContext };

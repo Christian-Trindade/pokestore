@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
+import Popover from "@material-ui/core/Popover";
 
 export const Container = styled.div`
   width: 100%;
@@ -77,7 +78,7 @@ export const SearchBar = styled(TextField)`
 
 export const Body = styled.div`
   width: 100%;
-  padding: 20px 0px 0px 20px;
+  padding: 15px 10px 15px 10px;
   box-sizing: border-box;
 
   h2 {

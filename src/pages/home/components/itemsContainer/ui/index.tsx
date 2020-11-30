@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
+import Skeleton from "@material-ui/lab/Skeleton";
 
 const PrimaryContainer = styled.div`
   display: flex;
@@ -24,8 +25,7 @@ const Name = styled.p`
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 152px;
+  max-width: 140px;
   padding: 0px 3px 0px 3px;
 `;
 const Price = styled.p`
@@ -64,6 +64,14 @@ const ShowcaseContainer = styled.div`
   }
 `;
 
+const ItemsLoading = () => {
+  return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => (
+    <ShowcaseContainer>
+      <Skeleton variant="rect" width={152} height={200} />
+    </ShowcaseContainer>
+  ));
+};
+
 export {
   Image,
   PrimaryContainer,
@@ -72,4 +80,5 @@ export {
   Price,
   PriceParcelate,
   AddToCartButton,
+  ItemsLoading,
 };

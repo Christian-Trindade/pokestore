@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // contexts
@@ -20,6 +20,12 @@ function getStoreType(): string {
 }
 
 const App: React.FC = () => {
+  const context = useContext(StoreContext);
+
+  useEffect(() => {
+    document.title = context.title;
+  }, []);
+
   return (
     <Router>
       <Switch>
