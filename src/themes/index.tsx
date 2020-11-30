@@ -48,10 +48,10 @@ const grassData = {
     type_id: 12,
   },
   pallet: {
-    primary: "#73ac31",
+    buttonHover: "#73ac31",
     productTitle: "#184a4a",
-    buttonHover: "#bdff73",
-    links: "#317373",
+    links: "#bdff73",
+    primary: "#317373",
     variant1: "#ffffff",
     variant2: "#526229",
     variant3: "#83eec5",
@@ -90,11 +90,10 @@ const eletricData = {
   pallet: {
     primary: "#f69418",
     productTitle: "#523910",
-    buttonHover: "#ffd541",
+    variant3: "#ffd541",
     links: "#ffd541",
-    variant5: "#c56a18",
     variant2: "#9c7b10",
-    variant3: "#f69418",
+    buttonHover: "#f69418",
     titleColor: "#ffffff",
     variant1: "#7b6a18",
     footerTextColor: "#7b6a18",
@@ -108,7 +107,7 @@ const Themes: DefaultData = {
   grasspokestore: grassData,
   ghostpokestore: ghostData,
   eletricpokestore: eletricData,
-  "localhost:3000": waterData,
+  "localhost:3000": ghostData,
 };
 
 export default Themes;

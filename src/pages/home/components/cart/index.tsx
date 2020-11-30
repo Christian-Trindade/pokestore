@@ -1,8 +1,11 @@
 import React from "react";
+
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import Popover from "@material-ui/core/Popover";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import IconButton from "@material-ui/core/IconButton";
+
+import Containercart from "./containerCart";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -51,7 +54,7 @@ const Cart: React.FC = () => {
           horizontal: "center",
         }}
       >
-        The content of the Popover
+        <Containercart />
       </Popover>
     </div>
   );
