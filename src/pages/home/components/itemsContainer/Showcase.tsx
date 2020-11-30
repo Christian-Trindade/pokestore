@@ -79,7 +79,12 @@ const PokemonShowcase: React.FC<ShowCaseProps> = ({ data }) => {
 
   return (
     <ShowcaseContainer>
-      <Image src={data.pokemon.image} ref={imageRef} />
+      <Image
+        src={data.pokemon.image}
+        loading="lazy"
+        alt={`Image do pokemon ${data.pokemon.name}`}
+        ref={imageRef}
+      />
       <Name> {nameCapitalized(data.pokemon.name)}</Name>
       <Price>{monetaryFormatter(data.pokemon.id)}</Price>
       <PriceParcelate>

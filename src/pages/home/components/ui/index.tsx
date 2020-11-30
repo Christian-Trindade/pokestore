@@ -5,6 +5,7 @@ import Popover from "@material-ui/core/Popover";
 export const Container = styled.div`
   width: 100%;
   height: 100%;
+  max-width: 80em;
 `;
 
 export const Header = styled.div`
