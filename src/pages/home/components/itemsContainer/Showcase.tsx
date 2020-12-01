@@ -26,6 +26,8 @@ function Alert(props: AlertProps) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
+const imageSize = window.innerWidth < 420 ? 112 : 152;
+
 const PokemonShowcase: React.FC<ShowCaseProps> = ({ data }) => {
   const storeContext = useContext(StoreContext);
 
@@ -84,6 +86,8 @@ const PokemonShowcase: React.FC<ShowCaseProps> = ({ data }) => {
         loading="lazy"
         alt={`Image do pokemon ${data.pokemon.name}`}
         ref={imageRef}
+        width={imageSize}
+        height={imageSize}
       />
       <Name> {nameCapitalized(data.pokemon.name)}</Name>
       <Price>{monetaryFormatter(data.pokemon.id)}</Price>

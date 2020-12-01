@@ -80,6 +80,8 @@ export const Body = styled.div`
   width: 100%;
   padding: 15px 10px 15px 10px;
   box-sizing: border-box;
+  max-width: 80rem;
+  margin: auto;
 
   h2 {
     line-height: 1.4;

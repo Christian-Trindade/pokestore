@@ -6,7 +6,13 @@ const Logo: React.FC = () => {
 
   return (
     <>
-      <img src="/assets/images/logo.svg" id="logo" />
+      <img
+        src="/assets/images/logo.svg"
+        height={40}
+        width={40}
+        alt="logo pokemon"
+        id="logo"
+      />
       <h2 id="title">{context.title}</h2>
     </>
   );

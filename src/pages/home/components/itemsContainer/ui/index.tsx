@@ -13,13 +13,13 @@ export const PrimaryContainer = styled.div`
 `;
 
 export const Image = styled.img`
-  max-width: 152px;
+  /* max-width: 152px;
   max-height: 152px;
 
   @media screen and (max-width: 420px) {
     max-width: 112px;
     max-height: 112px;
-  }
+  } */
 `;
 
 export const Name = styled.p`
