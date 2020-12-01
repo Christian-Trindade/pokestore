@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import api from "../../../../services/api";
 
 import { StoreContext, SearchContext } from "../../../../services/contexts";
@@ -8,7 +8,12 @@ import deepClone from "../../../../services/deepClone";
 import search from "../../../../services/search";
 
 import Showcase from "./Showcase";
-import { PrimaryContainer, ItemsLoading } from "./ui";
+import {
+  PrimaryContainer,
+  ItemsLoading,
+  LoadMoreButton,
+  LoadMoreContainer,
+} from "./ui";
 
 const POKEMON_IMAGE_URL =
   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
@@ -16,6 +21,7 @@ const POKEMON_IMAGE_URL =
 interface PokemonParams {
   pokemon: { [key: string]: String };
 }
+const paginationItems = window.innerWidth < 650 ? 6 : 12;
 
 const ItemsContainer: React.FC = () => {
   const context = useContext(StoreContext);
@@ -27,6 +33,10 @@ const ItemsContainer: React.FC = () => {
   const [items, setItems] = useState<Object[]>([]);
   const [activeItems, setActiveItems] = useState<Object[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [itemsToRender, setItemsToRender] = useState<number>(paginationItems);
+  const [hideLoadMoreButton, setHideLoadMoreButton] = useState(false);
+
+  const listRef = useRef<HTMLDivElement>(null);
 
   // receive a pokemon and add image and pokemon id in the object
   const modifyPokemonData = (el: PokemonParams): void => {
@@ -46,6 +56,7 @@ const ItemsContainer: React.FC = () => {
 
     setItems(pokemon);
     setActiveItems(pokemon);
+
     setLoading(false);
   };
 
@@ -66,22 +77,58 @@ const ItemsContainer: React.FC = () => {
       let itemPush = data.find(
         (item: { [key: string]: any }) => item.pokemon.id == element
       );
+
       searchItems.push(deepClone(itemPush));
     });
 
     setActiveItems(searchItems);
   };
 
+  const addMoreItems = () => {
+    setItemsToRender(itemsToRender + paginationItems);
+
+    if (itemsToRender + paginationItems >= items.length) {
+      setHideLoadMoreButton(true);
+    }
+  };
+
   useEffect(() => {
+    let lista = listRef.current;
+    if (lista) {
+      lista.addEventListener("scroll", () => {
+        console.log("final2");
+        if (
+          lista &&
+          lista.scrollTop + lista.offsetHeight == lista.scrollHeight
+        ) {
+          console.log("final");
+        }
+      });
+    }
+
     getItems();
   }, []);
 
   return (
-    <PrimaryContainer>
-      {!loading
-        ? activeItems.map((item, index) => <Showcase data={item} key={index} />)
-        : ItemsLoading()}
-    </PrimaryContainer>
+    <>
+      <PrimaryContainer ref={listRef}>
+        {!loading
+          ? activeItems.map((item, index) => {
+              if (index < itemsToRender) {
+                return <Showcase data={item} key={index} />;
+              }
+            })
+          : ItemsLoading()}
+      </PrimaryContainer>
+
+      {!hideLoadMoreButton && (
+        <LoadMoreContainer>
+          <LoadMoreButton onClick={() => addMoreItems()}>
+            Carregar mais Pokemons
+          </LoadMoreButton>
+        </LoadMoreContainer>
+      )}
+    </>
   );
 };
 

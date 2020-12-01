@@ -38,7 +38,13 @@ const Cart: React.FC = () => {
   return (
     <div>
       <IconButton onClick={handleClick}>
-        <ShoppingCartOutlinedIcon className={classes.icon} fontSize="large" />
+        <ShoppingCartOutlinedIcon
+          className={classes.icon}
+          fontSize="large"
+          aria-label="Carrinho"
+        >
+          Carrinho
+        </ShoppingCartOutlinedIcon>
       </IconButton>
       <Popover
         id={id}

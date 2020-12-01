@@ -93,6 +93,7 @@ const PokemonShowcase: React.FC<ShowCaseProps> = ({ data }) => {
       <AddToCartButton
         onClick={() => saveItemOnCart()}
         endIcon={<ShoppingCartIcon />}
+        aria-label="Pegar"
       >
         Pegar
       </AddToCartButton>
