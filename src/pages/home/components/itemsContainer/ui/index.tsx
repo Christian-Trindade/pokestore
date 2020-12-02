@@ -81,9 +81,9 @@ export const ShowcaseContainer = styled.div`
 `;
 
 export const ItemsLoading = () => {
-  return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => (
+  return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item, index) => (
     <ShowcaseContainer>
-      <Skeleton variant="rect" width={152} height={200} />
+      <Skeleton variant="rect" width={152} height={200} key={index} />
     </ShowcaseContainer>
   ));
 };

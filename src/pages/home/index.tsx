@@ -1,12 +1,11 @@
 import React, { useState, useRef } from "react";
-import { SearchContext } from "../../services/contexts";
-
 import { debounce } from "lodash";
 
-import { Container, Header, SearchBar, Footer, Body } from "./components/ui";
-import Logo from "./components/logo";
-import Cart from "./components/cart";
+import { SearchContext } from "../../services/contexts";
 import { StylesProvider } from "@material-ui/core/styles";
+
+import { Container, Footer, Body } from "./components/ui";
+import Header from "../../components/Header";
 
 import ItemsContainer from "./components/itemsContainer";
 
@@ -27,21 +26,7 @@ const Home: React.FC = () => {
     <SearchContext.Provider value={search}>
       <StylesProvider injectFirst>
         <Container>
-          <Header>
-            <div id="start-container">
-              <Logo />
-            </div>
-            <div id="end-container">
-              <SearchBar
-                placeholder="Buscar..."
-                id="outlined-search"
-                type="search"
-                variant="outlined"
-                onChange={handleChangeSearch}
-              />
-              <Cart />
-            </div>
-          </Header>
+          <Header handleChangeSearch={handleChangeSearch} />
           <Body>
             <h2>Os mais Vendidos!</h2>
             <ItemsContainer />

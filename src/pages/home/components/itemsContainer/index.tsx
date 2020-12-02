@@ -121,7 +121,7 @@ const ItemsContainer: React.FC = () => {
           : ItemsLoading()}
       </PrimaryContainer>
 
-      {!hideLoadMoreButton && (
+      {!hideLoadMoreButton && activeItems.length !== 0 && (
         <LoadMoreContainer>
           <LoadMoreButton onClick={() => addMoreItems()}>
             Carregar mais Pokemons
