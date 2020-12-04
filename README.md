@@ -45,5 +45,5 @@ http://eletricpokestore.s3-website-sa-east-1.amazonaws.com/
 <li>Foi utilizado Context APi para melhor distruição de valores entre os componentes</li>
 <li>Foi utilizado ThemeProvider para alterar as cores da loja quando acessadas por diferentes urls</li>
 <li>Padronização dos componentes usando Style-Components(até mesmo quando são components do MaterialUi)</li>
-</ul>
 <li>Construída 100% em Typescript como forma de aprendizado</li>
+</ul>
