@@ -1,15 +1,15 @@
 import React, { useState, useRef } from "react";
 import { debounce } from "lodash";
-
-import { SearchContext } from "../../services/contexts";
 import { StylesProvider } from "@material-ui/core/styles";
 
-import { Container, Footer, Body } from "./components/ui";
+import { SearchContext } from "../../services/contexts";
+import history from "../../services/History";
+
+import { Container, Body } from "../../components/ui";
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
-import ItemsContainer from "./components/itemsContainer";
-
-const Home: React.FC = () => {
+const TemplateDefault: React.FC = ({ children }) => {
   const [search, setSearch] = useState<string>("");
 
   const handleChangeSearch = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -18,7 +18,18 @@ const Home: React.FC = () => {
 
   const delayedQuery = useRef(
     debounce((text) => {
+      if (window.location.pathname.split("/")[1] == "product") {
+        setSearch(text);
+        if (!text) return;
+        history.push(`/?search=${text}`);
+        window.location.reload();
+        return;
+      }
+
+      let searchParam = "/";
       setSearch(text);
+      searchParam = text ? `?search=${text}` : "/";
+      window.history.pushState(searchParam, searchParam, searchParam);
     }, 500)
   ).current;
 
@@ -27,21 +38,12 @@ const Home: React.FC = () => {
       <StylesProvider injectFirst>
         <Container>
           <Header handleChangeSearch={handleChangeSearch} />
-          <Body>
-            <h2>Os mais Vendidos!</h2>
-            <ItemsContainer />
-          </Body>
-          <Footer>
-            <address>
-              PokeStore - Companhia Digital / CNPJ: 00.000.000/0000-00 /
-              Inscrição Estadual: 000.000.000.000 / Endereço Rua Pokemon
-              Company, 102 - Pallet{" "}
-            </address>
-          </Footer>
+          <Body>{children}</Body>
+          <Footer />
         </Container>
       </StylesProvider>
     </SearchContext.Provider>
   );
 };
 
-export default Home;
+export default TemplateDefault;

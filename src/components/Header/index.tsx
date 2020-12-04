@@ -1,14 +1,19 @@
-import React from "react";
+import * as React from "react";
+import { useState } from "react";
 
 import Logo from "./components/logo";
 import Cart from "./components/cart";
 import { Container, SearchBar } from "./ui";
+
+import initialSearchParam from "../../services/search/getSearchParams";
 
 interface HeaderParams {
   handleChangeSearch: Function;
 }
 
 const Header: React.FC<HeaderParams> = ({ handleChangeSearch }) => {
+  const [textSeacrh, setTextSearch] = useState<string>(initialSearchParam);
+
   return (
     <Container>
       <div id="start-container">
@@ -20,7 +25,11 @@ const Header: React.FC<HeaderParams> = ({ handleChangeSearch }) => {
           id="outlined-search"
           type="search"
           variant="outlined"
-          onChange={(e) => handleChangeSearch(e)}
+          onChange={(e) => {
+            setTextSearch(e.target.value);
+            handleChangeSearch(e);
+          }}
+          value={textSeacrh}
         />
 
         <Cart />

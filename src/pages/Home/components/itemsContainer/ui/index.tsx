@@ -12,15 +12,7 @@ export const PrimaryContainer = styled.div`
   margin: auto;
 `;
 
-export const Image = styled.img`
-  /* max-width: 152px;
-  max-height: 152px;
-
-  @media screen and (max-width: 420px) {
-    max-width: 112px;
-    max-height: 112px;
-  } */
-`;
+export const Image = styled.img``;
 
 export const Name = styled.p`
   font-family: "Flexo-Demi", arial, sans-serif;

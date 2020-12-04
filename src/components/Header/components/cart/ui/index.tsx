@@ -7,14 +7,6 @@ export const ItemsContainer = styled.div`
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  /* 
-  @media screen and (orientation: portrait) {
-    width: 30%;
-  }
-
-  @media screen and (orientation: landscape) {
-    width: 100%;
-  } */
 `;
 
 export const Image = styled.img`

@@ -1,11 +1,16 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
-import api from "../../../../services/api";
+import React, { useContext, useState, useEffect } from "react";
+
+import {
+  getPokemonByType,
+  POKEMON_IMAGE_URL_PATH,
+} from "../../../../services/api";
 
 import { StoreContext, SearchContext } from "../../../../services/contexts";
 
 import flattenObjects from "../../../../services/flattenObjects";
 import deepClone from "../../../../services/deepClone";
 import search from "../../../../services/search";
+import initialSearchParam from "../../../../services/search/getSearchParams";
 
 import Showcase from "./Showcase";
 import {
@@ -15,19 +20,18 @@ import {
   LoadMoreContainer,
 } from "./ui";
 
-const POKEMON_IMAGE_URL =
-  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
-
 interface PokemonParams {
   pokemon: { [key: string]: String };
 }
+
 const paginationItems = window.innerWidth < 650 ? 6 : 12;
 
 const ItemsContainer: React.FC = () => {
   const context = useContext(StoreContext);
   const searchText = useContext(SearchContext);
+
   useEffect(() => {
-    searchAndSetItems(items);
+    searchAndSetItems(items, searchText);
   }, [searchText]);
 
   const [items, setItems] = useState<Object[]>([]);
@@ -36,37 +40,39 @@ const ItemsContainer: React.FC = () => {
   const [itemsToRender, setItemsToRender] = useState<number>(paginationItems);
   const [hideLoadMoreButton, setHideLoadMoreButton] = useState(false);
 
-  const listRef = useRef<HTMLDivElement>(null);
-
   // receive a pokemon and add image and pokemon id in the object
   const modifyPokemonData = (el: PokemonParams): void => {
-    let paramsArray = el.pokemon.url.split("/");
-    let pokemonId = paramsArray[6];
-    let pokemonImageUrl = `${POKEMON_IMAGE_URL}${pokemonId}.png`;
+    const paramsArray = el.pokemon.url.split("/");
+    const pokemonId = paramsArray[6];
+    const pokemonImageUrl = `${POKEMON_IMAGE_URL_PATH}${pokemonId}.png`;
     el.pokemon.image = pokemonImageUrl;
     el.pokemon.id = pokemonId;
   };
 
   // receive a pokemon list filtered by type of store
   const getItems = async (): Promise<void> => {
-    let url = `type/${context.type_id}`;
-    let responseItems = await api.get(url);
-    let pokemon = responseItems.data.pokemon;
+    const responseItems = await getPokemonByType(context.type_id);
+    const pokemon = responseItems.data.pokemon;
     pokemon.forEach((el: PokemonParams) => modifyPokemonData(el));
 
     setItems(pokemon);
     setActiveItems(pokemon);
 
+    if (initialSearchParam) {
+      searchAndSetItems(pokemon, initialSearchParam);
+    }
+
     setLoading(false);
   };
 
   // search and set items
-  const searchAndSetItems = (data: object[]): void => {
+  const searchAndSetItems = (data: object[], text: string): void => {
     let flatenItems = data.map((item: any) => {
       return flattenObjects(item);
     });
 
-    let searchresult = search(searchText, flatenItems);
+    let searchresult = search(text, flatenItems);
+
     let searchids = searchresult.result.map(
       (item: { [key: string]: any }) => item["pokemon.id"]
     );
@@ -93,25 +99,12 @@ const ItemsContainer: React.FC = () => {
   };
 
   useEffect(() => {
-    let lista = listRef.current;
-    if (lista) {
-      lista.addEventListener("scroll", () => {
-        console.log("final2");
-        if (
-          lista &&
-          lista.scrollTop + lista.offsetHeight == lista.scrollHeight
-        ) {
-          console.log("final");
-        }
-      });
-    }
-
     getItems();
   }, []);
 
   return (
     <>
-      <PrimaryContainer ref={listRef}>
+      <PrimaryContainer>
         {!loading
           ? activeItems.map((item, index) => {
               if (index < itemsToRender) {
@@ -124,7 +117,7 @@ const ItemsContainer: React.FC = () => {
       {!hideLoadMoreButton && activeItems.length !== 0 && (
         <LoadMoreContainer>
           <LoadMoreButton onClick={() => addMoreItems()}>
-            Carregar mais Pokemons
+            Carregar mais Pokemon
           </LoadMoreButton>
         </LoadMoreContainer>
       )}

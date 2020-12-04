@@ -1,14 +1,16 @@
 import React, { useEffect, useContext } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
 
 // contexts
+import history from "../services/History";
 import { StoreContext } from "../services/contexts";
 import { ThemeProvider } from "styled-components";
 
-import Themes from "../themes";
-
 // pages
-import Home from "./home";
+import Home from "./Home";
+import ProductDetails from "./ProductDetails";
+
+import Themes from "../themes";
 
 const StoreType = getStoreType();
 
@@ -27,11 +29,14 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <Router>
+    <Router history={history}>
       <Switch>
-        <Route path="/">
-          <Home />
-        </Route>
+        <Route path="/" render={() => <Home />} exact={true} />
+        <Route
+          path="/product/:productId"
+          render={() => <ProductDetails />}
+          exact={true}
+        />
       </Switch>
     </Router>
   );

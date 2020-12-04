@@ -1,4 +1,7 @@
-import React, { useContext } from "react";
+import * as React from "react";
+import { useContext } from "react";
+
+import history from "../../../../services/History";
 import { StoreContext } from "../../../../services/contexts";
 
 const Logo: React.FC = () => {
@@ -12,8 +15,11 @@ const Logo: React.FC = () => {
         width={40}
         alt="logo pokemon"
         id="logo"
+        onClick={() => history.push("/")}
       />
-      <h2 id="title">{context.title}</h2>
+      <h2 id="title" onClick={() => history.push("/")}>
+        {context.title}
+      </h2>
     </>
   );
 };

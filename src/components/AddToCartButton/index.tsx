@@ -1,39 +1,25 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
+import * as React from "react";
+import { useContext, FC, useState } from "react";
 
-import nameCapitalized from "../../../../services/upperCaseName";
-import monetaryFormatter from "../../../../services/monetaryFormat";
-
-import { StoreContext } from "../../../../services/contexts";
-
-import {
-  Image,
-  ShowcaseContainer,
-  Name,
-  Price,
-  PriceParcelate,
-  AddToCartButton,
-} from "./ui";
+import { StoreContext } from "../../services/contexts";
 
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert, { AlertProps } from "@material-ui/lab/Alert";
 
-interface ShowCaseProps {
-  data: { [key: string]: any };
-}
+import { AddToCartButton } from "./ui";
 
 function Alert(props: AlertProps) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-const imageSize = window.innerWidth < 420 ? 112 : 152;
+interface addToCartProps {
+  data: { [key: string]: any };
+  size: "small" | "medium" | "large" | undefined;
+}
 
-const PokemonShowcase: React.FC<ShowCaseProps> = ({ data }) => {
+const AddToCart: FC<addToCartProps> = ({ data, size }) => {
   const storeContext = useContext(StoreContext);
-
-  const [pokemonImageUrl, setPokemonImageUrl] = useState<string>(
-    data.pokemon.image
-  );
 
   const [openAddMessage, setOpenAddMessage] = React.useState(false);
 
@@ -48,19 +34,6 @@ const PokemonShowcase: React.FC<ShowCaseProps> = ({ data }) => {
 
     setOpenAddMessage(false);
   };
-
-  const imageRef = useRef<HTMLImageElement>(null);
-
-  const setUnknowImage = () => {
-    if (!imageRef.current) return;
-    imageRef.current.src = "./assets/images/unknow.png";
-  };
-
-  useEffect(() => {
-    if (!imageRef.current) return;
-    imageRef.current.addEventListener("error", setUnknowImage);
-  });
-
   const saveItemOnCart = () => {
     let cartItemsJson = window.localStorage.getItem(`@${storeContext.title}`);
     let cartItems: Object[] = [];
@@ -80,24 +53,12 @@ const PokemonShowcase: React.FC<ShowCaseProps> = ({ data }) => {
   };
 
   return (
-    <ShowcaseContainer>
-      <Image
-        src={data.pokemon.image}
-        loading="lazy"
-        alt={`Image do pokemon ${data.pokemon.name}`}
-        ref={imageRef}
-        width={imageSize}
-        height={imageSize}
-      />
-      <Name> {nameCapitalized(data.pokemon.name)}</Name>
-      <Price>{monetaryFormatter(data.pokemon.id)}</Price>
-      <PriceParcelate>
-        12x de {monetaryFormatter(data.pokemon.id / 12)}
-      </PriceParcelate>
+    <>
       <AddToCartButton
         onClick={() => saveItemOnCart()}
         endIcon={<ShoppingCartIcon />}
         aria-label="Pegar"
+        size={size}
       >
         Pegar
       </AddToCartButton>
@@ -110,8 +71,8 @@ const PokemonShowcase: React.FC<ShowCaseProps> = ({ data }) => {
           O Pokemon {data.pokemon.name} foi adicionado ao seu carrinho!
         </Alert>
       </Snackbar>
-    </ShowcaseContainer>
+    </>
   );
 };
 
-export default PokemonShowcase;
+export default AddToCart;

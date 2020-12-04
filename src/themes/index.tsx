@@ -19,6 +19,7 @@ const fireData = {
     variant5: "#ffd57b",
     footerTextColor: "#6a6a6a",
     footerBg: "#dedede",
+    cleanGray: "#dedede",
   },
 };
 
@@ -39,6 +40,7 @@ const waterData = {
     variant5: "#5a525a",
     footerTextColor: "#6a6a6a",
     footerBg: "#dedede",
+    cleanGray: "#dedede",
   },
 };
 
@@ -59,6 +61,7 @@ const grassData = {
     variant5: "#a4d541",
     footerTextColor: "#526229",
     footerBg: "#dedede",
+    cleanGray: "#dedede",
   },
 };
 
@@ -79,6 +82,7 @@ const ghostData = {
     variant5: "#ff624a",
     footerTextColor: "#d53920",
     footerBg: "#dedede",
+    cleanGray: "#dedede",
   },
 };
 
@@ -98,6 +102,7 @@ const eletricData = {
     variant1: "#7b6a18",
     footerTextColor: "#7b6a18",
     footerBg: "#dedede",
+    cleanGray: "#dedede",
   },
 };
 
@@ -107,7 +112,7 @@ const Themes: DefaultData = {
   grasspokestore: grassData,
   ghostpokestore: ghostData,
   eletricpokestore: eletricData,
-  "localhost:3000": ghostData,
+  "localhost:3000": grassData,
 };
 
 export default Themes;

@@ -75,8 +75,6 @@ const CartShowCase: React.FC<ShowCaseProps> = ({ data, getAndSetItems }) => {
       return item;
     });
 
-    console.log(cartItems, newCartItems);
-
     window.localStorage.setItem(
       `@${storeContext.title}`,
       JSON.stringify(newCartItems)
