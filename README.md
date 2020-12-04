@@ -1,6 +1,6 @@
 # Loja Pokemon - Consumindo PokeApi
 
-Projeto simples construído em ReactJs de uma loja de vendas de pokemons para o desafio da B2wfocado em qualidade de código e construção de funcionalidades, possuindo uma UI simples e pequena, porém funcional.
+Projeto simples construído em ReactJs de uma loja de vendas de pokemons para o desafio da B2w focado em qualidade de código e construção de funcionalidades, possuindo uma UI simples e pequena, porém funcional.
 
 # Páginas
 
@@ -24,7 +24,7 @@ Projeto simples construído em ReactJs de uma loja de vendas de pokemons para o 
 <li>Botão de finalizar compra, reiniciando o processo de compra</li>
 <li>Modal de obrigado ao finalizar compra</li>
 <li>Dados do carrinhos salvos localmente para não perdê-los ao atualizar a página</li>
-<li>Toas as lojas se encontram online distribuídas em Buckers do <b>AWS S3</b> nos links a seguir:
+<li>Todas as lojas se encontram online distribuídas em Buckers do <b>AWS S3</b> nos links a seguir:
 
 http://grasspokestore.s3-website-sa-east-1.amazonaws.com/
 
