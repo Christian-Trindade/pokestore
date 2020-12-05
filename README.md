@@ -21,6 +21,7 @@ Projeto simples construído em ReactJs de uma loja de vendas de pokemons para o 
 <li>Barra de busca instantânea para filtrar os Pokémon <br>
     O processo de busca é acionado 500 milisegundos após o usuário parar de digitar, utilizando a estratégia de <b>debounce</b> com a lib <b>Loadsh</b></li>
 <li>Busca por Url passando o parametro search</ll>
+<li>Navgação por menu Breadcrumb</ll>
 <li>Botão de finalizar compra, reiniciando o processo de compra</li>
 <li>Modal de obrigado ao finalizar compra</li>
 <li>Dados do carrinhos salvos localmente para não perdê-los ao atualizar a página</li>

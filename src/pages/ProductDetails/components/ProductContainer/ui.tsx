@@ -35,9 +35,9 @@ export const ThirdContainer = styled.div`
 
 export const ProductName = styled.div`
   font-family: "Flexo-Medium", arial, sans-serif;
-  color: #212121;
+  color: ${({ theme }) => theme.productTitle};
   float: left;
-  font-size: 225%;
+  font-size: 2.25rem;
   text-align: center;
   margin: 10px 0px 10px 0px;
 `;
@@ -45,6 +45,21 @@ export const ProductName = styled.div`
 export const ProductImage = styled.img`
   background-color: ${({ theme }) => theme.cleanGray};
   margin-right: 15px;
+`;
+
+export const Price = styled.p`
+  font-weight: bold;
+  font-family: Helvetica, Arial, sans-serif;
+  color: rgb(51, 51, 51);
+  font-weight: bold;
+  font-size: 2.25rem;
+  margin: auto;
+`;
+
+export const PriceParcelate = styled.p`
+  font-size: 1em;
+  margin: auto;
+  margin-bottom: 10px;
 `;
 
 export const StatusContainer = styled.div`

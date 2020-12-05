@@ -2,6 +2,7 @@ import * as React from "react";
 import { FC } from "react";
 
 import nameCapitalized from "../../../../services/upperCaseName";
+import monetaryFormatter from "../../../../services/monetaryFormat";
 
 import AddToCart from "../../../../components/AddToCartButton";
 
@@ -14,6 +15,8 @@ import {
   StatusValue,
   SecondaryContainer,
   ThirdContainer,
+  Price,
+  PriceParcelate,
 } from "./ui";
 
 interface ProductContainerProps {
@@ -46,6 +49,10 @@ const ProductContainer: FC<ProductContainerProps> = ({ data }) => {
               </>
             ))}
           </StatusContainer>
+          <Price>{monetaryFormatter(data.id)}</Price>
+          <PriceParcelate>
+            12x de {monetaryFormatter(data.id / 12)}
+          </PriceParcelate>
           <AddToCart
             data={{
               pokemon: {
